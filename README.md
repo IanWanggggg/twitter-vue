@@ -1,6 +1,7 @@
 # Twitter Project
 
 ## 關於專案 ****About The Project****
+(目前只針對Windows Chrome桌機版瀏覽器開發，如使用手機或是其他瀏覽器可能造成跑版，敬請見諒。)
 
 隨著社群媒體蓬勃發展，人們交流、互動的方式越趨轉於線上，因此我們模擬相當熱門的平台Twitter，試著打造一個能供人們在線上互動的社群軟體。
 
@@ -21,9 +22,10 @@
 
 除了使用Vue外，切版部分均為手刻，沒有使用如Bootstrap開發框架，大型排版使用Grid系統，小型部分微調則是使用Flex系統或是Position定位。
 
+
 ## ****使用步驟 Project setup****
 1. 可以使用此連結開始使用Twitter：
-https://andy888jam.github.io/twitter-front-end/#/signin     進入後，請先創建一組帳號密碼以登入，就可以使用該產品各項功能。
+https://ianwanggggg.github.io/twitter-vue/     進入後，請先創建一組帳號密碼以登入，就可以使用該產品各項功能。
 
 2. 亦可以依照下列步驟安裝到本地執行：
 
