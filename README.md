@@ -18,7 +18,7 @@
 
 ## 開發工具 **Built With**
 
-前端框架： Vue.js
+使用工具： Vue.js(Vue3)，Vuex，Vue router
 
 除了使用Vue外，切版部分均為手刻，沒有使用如Bootstrap開發框架，大型排版使用Grid系統，小型部分微調則是使用Flex系統或是Position定位。
 
@@ -26,6 +26,7 @@
 ## ****使用步驟 Project setup****
 1. 可以使用此連結開始使用Twitter：
 https://ianwanggggg.github.io/twitter-vue/     進入後，請先創建一組帳號密碼以登入，就可以使用該產品各項功能。
+若不希望額外創建帳號，以下提供測試用帳號 (【帳號： user3】  【密碼： 12345678】 )
 
 2. 亦可以依照下列步驟安裝到本地執行：
 
