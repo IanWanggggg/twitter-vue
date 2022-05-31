@@ -1,38 +1,52 @@
 <template>
-  <div class="PopularUsers">
-    <h1 class="popularUsersTitle">跟隨誰</h1>
-    <div class="popularUser" v-for="user in popularUsers" :key="user.id">
-      <router-link :to="{ name: 'user-other', params: { id: user.id , type: 'tweets' } }">
-        <img :src="user.avatar | emptyImage" class="popularUsersImage" alt="" />
-      </router-link>
-      <div class="popularUsersNameGroup">
+  <div class="PopularUsersWrapper">
+    <div class="PopularUsers">
+      <h1 class="popularUsersTitle">跟隨誰</h1>
+      <div class="popularUser" v-for="user in popularUsers" :key="user.id">
         <router-link
-          :to="{ name: 'user-other', params: { id: user.id , type: 'tweets' } }"
-          class="popularUsersName"
-          >{{ user | nameIsTooLong }}</router-link
+          :to="{ name: 'user-other', params: { id: user.id, type: 'tweets' } }"
         >
-        <router-link
-          :to="{ name: 'user-other', params: { id: user.id , type: 'tweets' } }"
-          class="popularUsersAccount"
-          >@{{ user | accountIsTooLong }}</router-link
+          <img
+            :src="user.avatar | emptyImage"
+            class="popularUsersImage"
+            alt=""
+          />
+        </router-link>
+        <div class="popularUsersNameGroup">
+          <router-link
+            :to="{
+              name: 'user-other',
+              params: { id: user.id, type: 'tweets' },
+            }"
+            class="popularUsersName"
+            >{{ user | nameIsTooLong }}</router-link
+          >
+          <router-link
+            :to="{
+              name: 'user-other',
+              params: { id: user.id, type: 'tweets' },
+            }"
+            class="popularUsersAccount"
+            >@{{ user | accountIsTooLong }}</router-link
+          >
+        </div>
+        <button
+          :disabled="isProcessing"
+          @click.stop.prevent="deleteFollowing(user.id)"
+          class="popularUsersFollowedBtn"
+          v-if="user.isFollowed"
         >
+          正在跟隨
+        </button>
+        <button
+          :disabled="isProcessing"
+          @click.stop.prevent="addFollowing(user.id)"
+          class="popularUsersFollowBtn"
+          v-else
+        >
+          跟隨
+        </button>
       </div>
-      <button
-        :disabled="isProcessing"
-        @click.stop.prevent="deleteFollowing(user.id)"
-        class="popularUsersFollowedBtn"
-        v-if="user.isFollowed"
-      >
-        正在跟隨
-      </button>
-      <button
-        :disabled="isProcessing"
-        @click.stop.prevent="addFollowing(user.id)"
-        class="popularUsersFollowBtn"
-        v-else
-      >
-        跟隨
-      </button>
     </div>
   </div>
 </template>
@@ -55,7 +69,9 @@ export default {
       try {
         const { data } = await usersAPI.getTopUsers();
         this.popularUsers = data;
-        this.popularUsers = this.popularUsers.filter((item) => item.id !== this.$store.state.currentUser.id).slice(0, 8)
+        this.popularUsers = this.popularUsers
+          .filter((item) => item.id !== this.$store.state.currentUser.id)
+          .slice(0, 8);
       } catch (error) {
         Toast.fire({
           icon: "error",
@@ -146,9 +162,15 @@ export default {
 .PopularUsers {
   width: 273px;
   height: 731px;
+  margin-top: 16px;
+  margin-bottom: 16px;
   border-radius: 16px;
   background-color: #f5f8fa;
   z-index: 50;
+}
+
+.PopularUsersWrapper::-webkit-scrollbar {
+  display: none;
 }
 
 .popularUsersTitle {

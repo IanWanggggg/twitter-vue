@@ -66,7 +66,6 @@ export default {
 
 #Navbar {
   justify-self: start;
-  position: fixed;
   margin-left: 130px;
   /* width: 178px; */
 }
@@ -75,13 +74,23 @@ export default {
   position: fixed;
   justify-self: end;
   margin-right: 130px;
-  margin-top: 16px;
+  top: 0px;
+  bottom: 0px;
+  overflow-y: scroll;
   /* width: 273px; */
 }
 
 .mainSection {
+  position: fixed;
   width: 640px;
   margin-left: 332px;
+  top: 0px;
+  bottom: 0px;
+  overflow-y:scroll;
+}
+
+.mainSection::-webkit-scrollbar {
+  display: none;
 }
 
 .mainSectionContent {

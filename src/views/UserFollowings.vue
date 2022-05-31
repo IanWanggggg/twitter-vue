@@ -237,7 +237,6 @@ export default {
 
 #Navbar {
   justify-self: start;
-  position: fixed;
   margin-left: 130px;
   /* width: 210px; */
 }
@@ -246,19 +245,25 @@ export default {
   position: fixed;
   justify-self: end;
   margin-right: 130px;
-  margin-top: 16px;
+  top: 0px;
+  bottom: 0px;
+  overflow-y: scroll;
   /* width: 350px; */
 }
 
 .UserFollowingsMain {
+  position: fixed;
   width: 640px;
   margin-left: 332px;
+  top: 0px;
+  bottom: 0px;
+  overflow-y:scroll;
   border-left: 1px solid #e6ecf0;
   border-right: 1px solid #e6ecf0;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
-  /* border: 1px solid black; */
+}
+
+.UserFollowingsMain::-webkit-scrollbar {
+  display: none;
 }
 
 .userTitle {

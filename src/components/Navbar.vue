@@ -178,10 +178,17 @@ export default {
 .Navbar {
   background-color: #fff;
   width: 178px;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   z-index: 100;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  overflow-y: scroll;
+}
+
+.Navbar::-webkit-scrollbar {
+  display: none;
 }
 
 .navbarLogo {
@@ -238,8 +245,7 @@ export default {
   right: 0px;
   bottom: 0px;
   z-index: 999;
-  width: 100vw;
-  height: 100vh;
+  width: 1400px;
   background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
