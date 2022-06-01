@@ -14,6 +14,7 @@
       <UserOtherCard :initialCurrentUser="currentUser" />
       <UserOtherTabs :currentUser="currentUser" />
       <UserTweets
+        @replyTweetSubmit="fetchData($route.params.id)"
         v-if="$route.name == 'user-other' && $route.params.type == 'tweets'"
         :initialCurrentTweets="userTweets"
       />
@@ -22,6 +23,7 @@
         :currentRepliedTweets="userComments"
       />
       <UserLikesTweets
+        @replyTweetSubmit="fetchData($route.params.id)"
         v-if="$route.name == 'user-other' && $route.params.type == 'likes'"
         :initialCurrentTweets="userLikes"
       />

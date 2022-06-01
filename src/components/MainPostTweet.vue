@@ -24,6 +24,7 @@
 
     <button
       class="mainPostTweetSubmitBtn"
+      :disabled="isProcessing"
       @click.stop.prevent="postTweetModalSubmit"
     >
       推文
@@ -34,7 +35,7 @@
 <script>
 import { mapState } from "vuex";
 import tweetsAPI from "../apis/tweets";
-import {Toast} from '../utility/helpers'
+import { Toast } from "../utility/helpers";
 import { emptyImageFilter } from "../utility/mixins";
 
 export default {
@@ -46,6 +47,7 @@ export default {
     return {
       tweetText: "",
       mainPostTweetErrorMessage: "",
+      isProcessing: false,
     };
   },
   methods: {
@@ -53,28 +55,32 @@ export default {
       try {
         if (!this.tweetText.trim()) {
           this.mainPostTweetErrorMessage = "內容不可留白";
-          this.tweetText = ''
+          this.tweetText = "";
           return;
         }
         if (this.tweetText.length > 140) {
           return;
         }
 
-        await tweetsAPI.postTweet({description: this.tweetText})
+        this.isProcessing = true;
 
+        await tweetsAPI.postTweet({ description: this.tweetText });
 
         this.tweetText = "";
 
+        this.isProcessing = false;
+        this.$emit("postTweetSubmit");
+
         Toast.fire({
-          icon: 'success',
-          title: '推文成功'
-        })
-        this.$router.go(0);
+          icon: "success",
+          title: "推文成功",
+        });
       } catch (error) {
+        this.isProcessing = false;
         Toast.fire({
-          icon: 'error',
-          title: '推文失敗'
-        })
+          icon: "error",
+          title: "推文失敗",
+        });
       }
     },
   },
@@ -127,6 +133,10 @@ export default {
   bottom: 16px;
   right: 25px;
   border: 0;
+}
+
+.mainPostTweetSubmitBtn:disabled {
+  background-color: #ff9c5b;
 }
 
 .mainPostTweetSubmitBtn:hover {

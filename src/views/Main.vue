@@ -1,13 +1,13 @@
 <template>
   <div class="Main">
-    <Navbar id="Navbar" />
+    <Navbar @postTweetSubmit="fetchData" id="Navbar" />
     <div class="mainSection">
       <div class="mainSectionContent">
         <div class="mainTitle">
           <h1>首頁</h1>
         </div>
-        <MainPostTweet :currentUser="currentUser" />
-        <AllTweets :initialCurrentTweets="currentTweets" />
+        <MainPostTweet @postTweetSubmit="fetchData" :currentUser="currentUser" />
+        <AllTweets @replyTweetSubmit="fetchData" :initialCurrentTweets="currentTweets" />
       </div>
     </div>
     <PopularUsers id="PopularUsers" />

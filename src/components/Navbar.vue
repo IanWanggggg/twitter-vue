@@ -108,7 +108,7 @@
 
 <script>
 import { Toast } from "../utility/helpers";
-import tweetsAPI from '../apis/tweets'
+import tweetsAPI from "../apis/tweets";
 import { mapState } from "vuex";
 import { emptyImageFilter } from "../utility/mixins";
 
@@ -123,7 +123,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(['currentUser'])
+    ...mapState(["currentUser"]),
   },
   methods: {
     openPostTweetModal() {
@@ -140,27 +140,28 @@ export default {
       try {
         if (!this.tweetText.trim()) {
           this.postTweetModalErrorMessage = "內容不可留白";
-          this.tweetText = ''
+          this.tweetText = "";
           return;
-        }else if (this.tweetText.length > 140) {
-          return
+        } else if (this.tweetText.length > 140) {
+          return;
         }
 
-        this.isProcessing = true
+        this.isProcessing = true;
 
-        await tweetsAPI.postTweet({description: this.tweetText})
+        await tweetsAPI.postTweet({ description: this.tweetText });
 
         this.tweetText = "";
         this.postTweetModalIsOpen = false;
 
+        this.isProcessing = false;
+        this.$emit('postTweetSubmit')
+
         Toast.fire({
-          icon: 'success',
-          title: '推文成功'
-        })
-        this.isProcessing = false
-        this.$router.go(0)
+          icon: "success",
+          title: "推文成功",
+        });
       } catch (error) {
-        this.isProcessing = false
+        this.isProcessing = false;
         Toast.fire({
           icon: "error",
           title: "推文失敗",
@@ -328,6 +329,10 @@ export default {
 
 .postTweetModalSubmitBtn:hover {
   cursor: pointer;
+}
+
+.postTweetModalSubmitBtn:disabled {
+  background-color: #ff9c5b;
 }
 
 .postTweetModalSubmitBtn:disabled:hover {

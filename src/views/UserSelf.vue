@@ -1,6 +1,6 @@
 <template>
   <div class="UserSelfContainer">
-    <Navbar id="Navbar" />
+    <Navbar @postTweetSubmit="fetchData(currentUser.id)" id="Navbar" />
     <div v-show="currentUser.name" class="UserSelfMain">
       <div class="userTitle">
         <router-link to="/main">
@@ -11,9 +11,10 @@
           <span class="infoTweetsNumber">{{ userTweets.length }}則推文</span>
         </div>
       </div>
-      <UserSelfCard :initialCurrentUser="currentUser" />
+      <UserSelfCard @userEditSubmit="fetchData(currentUser.id)" :initialCurrentUser="currentUser" />
       <UserTabs />
       <UserTweets
+        @replyTweetSubmit="fetchData(currentUser.id)"
         v-if="$route.path == '/user/self/tweets'"
         :initialCurrentTweets="userTweets"
       />
@@ -22,6 +23,7 @@
         :currentRepliedTweets="userComments"
       />
       <UserLikesTweets
+        @replyTweetSubmit="fetchData(currentUser.id)"
         v-if="$route.path == '/user/self/likes'"
         :initialCurrentTweets="userLikes"
       />

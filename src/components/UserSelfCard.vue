@@ -211,7 +211,12 @@ export default {
 
         this.userEditModalIsOpen = false;
         this.isProcessing = false
-        this.$router.go(0);
+        this.$emit('userEditSubmit')
+
+        Toast.fire({
+          icon: 'success',
+          title: '使用者資料更改成功'
+        })
       } catch (error) {
         this.isProcessing = false
         Toast.fire({
@@ -398,6 +403,10 @@ span {
   color: #ffffff;
   font-size: 16px;
   line-height: 24px;
+}
+
+.save:disabled {
+  background-color: #ff9c5b;
 }
 
 .save:disabled:hover {

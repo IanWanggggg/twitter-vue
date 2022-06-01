@@ -250,6 +250,10 @@ form {
   cursor: pointer;
 }
 
+.signInBtn:disabled {
+  background-color: #ff9c5b;
+}
+
 .signInBtn:disabled:hover {
   cursor: wait;
 }

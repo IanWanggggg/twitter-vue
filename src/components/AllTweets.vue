@@ -277,15 +277,15 @@ export default {
           comment: this.replyText,
         });
 
+        this.replyText = "";
+        this.replyTweetModalIsOpen = false;
+        this.isProcessing = false;
+        this.$emit("replyTweetSubmit");
+
         Toast.fire({
           icon: "success",
           title: "回覆推文成功",
         });
-
-        this.replyText = "";
-        this.replyTweetModalIsOpen = false;
-        this.isProcessing = false;
-        this.$router.go(0);
       } catch (error) {
         this.isProcessing = false;
         Toast.fire({
@@ -530,6 +530,10 @@ export default {
 
 .replyTweetModalSubmitBtn:hover {
   cursor: pointer;
+}
+
+.replyTweetModalSubmitBtn:disabled {
+  background-color: #ff9c5b;
 }
 
 .replyTweetModalSubmitBtn:disabled:hover {

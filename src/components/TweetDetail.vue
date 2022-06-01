@@ -2,8 +2,17 @@
   <div class="TweetDetail">
     <div class="tweetContent">
       <div class="tweetUser">
-        <router-link :to="{name: 'user-other', params: {id: initialTweet.User.id , type: 'tweets'}}">
-          <img class="tweetUserImage" :src="initialTweet.User.avatar | emptyImage" alt="" />
+        <router-link
+          :to="{
+            name: 'user-other',
+            params: { id: initialTweet.User.id, type: 'tweets' },
+          }"
+        >
+          <img
+            class="tweetUserImage"
+            :src="initialTweet.User.avatar | emptyImage"
+            alt=""
+          />
           <div class="tweetUserNameGroup">
             <p class="tweetUserName">{{ initialTweet.User.name }}</p>
             <p class="tweetUserAccount">@{{ initialTweet.User.account }}</p>
@@ -27,7 +36,11 @@
         </p>
       </div>
       <div class="tweetCommentLikeBtn">
-        <button :disabled="isProcessing" @click.stop.prevent="openReplyTweetModal" class="tweetCommentBtn">
+        <button
+          :disabled="isProcessing"
+          @click.stop.prevent="openReplyTweetModal"
+          class="tweetCommentBtn"
+        >
           <img
             class="tweetCommentIcon"
             src="../assets/comment-icon-large.png"
@@ -83,7 +96,7 @@
                   class="replyTweetUserName"
                   :to="{
                     name: 'user-other',
-                    params: { id: initialTweet.User.id , type: 'tweets' },
+                    params: { id: initialTweet.User.id, type: 'tweets' },
                   }"
                   >{{ initialTweet.User.name }}</router-link
                 >
@@ -91,7 +104,7 @@
                   class="replyTweetUserAccount"
                   :to="{
                     name: 'user-other',
-                    params: { id: initialTweet.User.id , type: 'tweets' },
+                    params: { id: initialTweet.User.id, type: 'tweets' },
                   }"
                   >@{{ initialTweet.User.account }}</router-link
                 >
@@ -158,7 +171,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(['currentUser'])
+    ...mapState(["currentUser"]),
   },
   methods: {
     async addLike(id) {
@@ -166,8 +179,8 @@ export default {
         this.isProcessing = true;
         await tweetsAPI.addLike({ id });
 
-        this.initialTweet.isLiked = true
-        this.initialTweet.Likes++
+        this.initialTweet.isLiked = true;
+        this.initialTweet.Likes++;
         this.isProcessing = false;
       } catch (error) {
         this.isProcessing = false;
@@ -182,8 +195,8 @@ export default {
         this.isProcessing = true;
         await tweetsAPI.deleteLike({ id });
 
-        this.initialTweet.isLiked = false
-        this.initialTweet.Likes--
+        this.initialTweet.isLiked = false;
+        this.initialTweet.Likes--;
         this.isProcessing = false;
       } catch (error) {
         this.isProcessing = false;
@@ -194,11 +207,11 @@ export default {
       }
     },
     openReplyTweetModal() {
-      this.replyTweetModalIsOpen = true
+      this.replyTweetModalIsOpen = true;
     },
     closeReplyTweetModal() {
-      this.replyText = ''
-      this.replyTweetModalIsOpen = false
+      this.replyText = "";
+      this.replyTweetModalIsOpen = false;
     },
     async replyTweetModalSubmit() {
       try {
@@ -207,13 +220,13 @@ export default {
             icon: "warning",
             title: "回覆內容不可留白",
           });
-          return
+          return;
         } else if (this.replyText.length > 140) {
           Toast.fire({
             icon: "warning",
             title: "回覆內容不可超過140字",
           });
-          return
+          return;
         }
 
         this.isProcessing = true;
@@ -223,15 +236,15 @@ export default {
           comment: this.replyText,
         });
 
+        this.replyText = "";
+        this.replyTweetModalIsOpen = false;
+        this.isProcessing = false;
+        this.$emit("replyTweetSubmit");
+
         Toast.fire({
           icon: "success",
           title: "回覆推文成功",
         });
-
-        this.replyText = "";
-        this.replyTweetModalIsOpen = false;
-        this.isProcessing = false;
-        this.$router.go(0);
       } catch (error) {
         this.isProcessing = false;
         Toast.fire({
@@ -452,6 +465,10 @@ export default {
 
 .replyTweetModalSubmitBtn:hover {
   cursor: pointer;
+}
+
+.replyTweetModalSubmitBtn:disabled {
+  background-color: #ff9c5b;
 }
 
 .replyTweetModalSubmitBtn:disabled:hover {

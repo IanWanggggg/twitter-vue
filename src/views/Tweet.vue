@@ -10,6 +10,7 @@
           </router-link>
         </div>
         <TweetDetail
+          @replyTweetSubmit="fetchData($route.params.id)"
           id="TweetDetail"
           :initialTweet="tweet"
         />
