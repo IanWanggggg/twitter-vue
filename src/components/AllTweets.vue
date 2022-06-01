@@ -442,7 +442,7 @@ export default {
   right: 0px;
   bottom: 0px;
   z-index: 100;
-  width: 1400px;
+  width: 100vw;
   background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
