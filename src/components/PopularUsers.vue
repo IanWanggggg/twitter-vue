@@ -166,7 +166,6 @@ export default {
   margin-bottom: 16px;
   border-radius: 16px;
   background-color: #f5f8fa;
-  z-index: 50;
 }
 
 .PopularUsersWrapper::-webkit-scrollbar {

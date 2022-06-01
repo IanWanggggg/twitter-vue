@@ -133,7 +133,7 @@ export default {
 }
 
 .UserSelfMain {
-  position: fixed;
+  position: absolute;
   width: 640px;
   margin-left: 332px;
   top: 0px;
@@ -141,10 +141,6 @@ export default {
   overflow-y:scroll;
   border-left: 1px solid #e6ecf0;
   border-right: 1px solid #e6ecf0;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
-  /* border: 1px solid black; */
 }
 
 .UserSelfMain::-webkit-scrollbar {

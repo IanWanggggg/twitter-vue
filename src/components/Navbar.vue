@@ -180,7 +180,7 @@ export default {
   width: 178px;
   display: flex;
   flex-direction: column;
-  z-index: 100;
+  z-index: 50;
   position: fixed;
   top: 0px;
   bottom: 0px;

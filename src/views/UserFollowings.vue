@@ -252,7 +252,7 @@ export default {
 }
 
 .UserFollowingsMain {
-  position: fixed;
+  position: absolute;
   width: 640px;
   margin-left: 332px;
   top: 0px;
