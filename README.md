@@ -18,7 +18,7 @@
 
 ## 開發工具 **Built With**
 
-使用工具： Vue.js(Vue3)，Vuex，Vue router
+使用工具： Vue.js(Vue2)，Vuex，Vue router
 
 除了使用Vue外，切版部分均為手刻，沒有使用如Bootstrap開發框架，大型排版使用Grid系統，小型部分微調則是使用Flex系統或是Position定位。
 
