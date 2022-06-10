@@ -344,9 +344,9 @@ span {
   right: 0px;
   bottom: 0px;
   z-index: 999;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
 }
 
 #userEditModalWrapper {

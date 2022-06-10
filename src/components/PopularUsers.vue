@@ -168,6 +168,13 @@ export default {
   background-color: #f5f8fa;
 }
 
+.PopularUsersWrapper {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  overflow-y: scroll;
+}
+
 .PopularUsersWrapper::-webkit-scrollbar {
   display: none;
 }

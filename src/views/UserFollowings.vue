@@ -233,6 +233,7 @@ export default {
 .UserSelfContainer {
   width: 100%;
   display: grid;
+  border: 0.1px solid white;
 }
 
 #Navbar {
@@ -242,21 +243,15 @@ export default {
 }
 
 #PopularUsers {
-  position: fixed;
-  justify-self: end;
-  margin-right: 130px;
-  top: 0px;
-  bottom: 0px;
-  overflow-y: scroll;
-  /* width: 350px; */
+  justify-self: start;
+  margin-left: 1000px;
+  /* width: 273px; */
 }
 
 .UserFollowingsMain {
   position: absolute;
   width: 640px;
   margin-left: 332px;
-  top: 0px;
-  bottom: 0px;
   overflow-y:scroll;
   border-left: 1px solid #e6ecf0;
   border-right: 1px solid #e6ecf0;

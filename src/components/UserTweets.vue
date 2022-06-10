@@ -439,8 +439,6 @@ export default {
   right: 0px;
   bottom: 0px;
   z-index: 999;
-  width: 100vw;
-  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
@@ -549,6 +547,7 @@ export default {
 .replyTweetUserImage {
   width: 50px;
   height: 50px;
+  object-fit: cover;
   border-radius: 50%;
   margin-right: 8px;
   background-color: #fff;

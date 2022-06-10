@@ -109,6 +109,7 @@ export default {
 .Tweet {
   width: 100%;
   display: grid;
+  border: 0.1px solid white;
 }
 
 #Navbar {
@@ -118,12 +119,8 @@ export default {
 }
 
 #PopularUsers {
-  position: fixed;
-  justify-self: end;
-  margin-right: 130px;
-  top: 0px;
-  bottom: 0px;
-  overflow-y: scroll;
+  justify-self: start;
+  margin-left: 1000px;
   /* width: 273px; */
 }
 
@@ -131,8 +128,6 @@ export default {
   position: absolute;
   width: 640px;
   margin-left: 332px;
-  top: 0px;
-  bottom: 0px;
   overflow-y:scroll;
 }
 
